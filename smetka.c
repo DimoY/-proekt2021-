@@ -1,6 +1,7 @@
 #include "danni_i_funcii.h"
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 
 
 void add_smetka(struct smetka_t* smetka_t,char spec[250],int user_id){
@@ -89,7 +90,7 @@ void withdraw(struct smetka_t* smetka, char name_smetka[])
 
 void deposit(struct smetka_t* smetka, char name_smetka[])
 {
-    int money_to_deposit = NULL;
+    int money_to_deposit = 0;
 
     struct smetka* first = smetka_by_spec(smetka, name_smetka);
 

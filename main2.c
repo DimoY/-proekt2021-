@@ -7,8 +7,10 @@
 void Register(struct user_t* users_t){
     char username[251];
     char pass[250];
+    printf("Name : \n");
     fgets(username,250,stdin);
     username[strcspn(username, "\n")] = 0;
+    printf("Pass : \n");
     fgets(pass,250,stdin);
     pass[strcspn(pass, "\n")] = 0;
     crypt(pass);
@@ -43,5 +45,6 @@ int main(int argc, char const *argv[])
     Register(&users_t);
     Register(&users_t);
     printf("found %s",user_by_id(&users_t,2)->name);
+   
     return 0;
 }
