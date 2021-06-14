@@ -45,6 +45,6 @@ int main(int argc, char const *argv[])
     Register(&users_t);
     Register(&users_t);
     printf("found %s",user_by_id(&users_t,2)->name);
-   
+    
     return 0;
 }

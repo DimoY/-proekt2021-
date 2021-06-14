@@ -94,7 +94,7 @@ void deposit(struct smetka_t* smetka, char name_smetka[])
 
     struct smetka* first = smetka_by_spec(smetka, name_smetka);
 
-     if(first != NULL)
+    if(first != NULL)
     {
         printf("This smetka's name doesn't exist\n");
         return ; 
@@ -105,3 +105,36 @@ void deposit(struct smetka_t* smetka, char name_smetka[])
     first ->balans += money_to_deposit;
     printf("Successful deposit!");
 }
+
+void transfer(struct transaction_t* transaction, struct smetka_t* smetka, char name_smetka1[], char name_smetka2[])
+{
+    int money_from_to = 0;
+
+     struct smetka* from = smetka_by_spec(smetka, name_smetka1);
+     struct smetka* to = smetka_by_spec(smetka, name_smetka2);
+
+    if(from == NULL || to == NULL)
+    {
+         printf("Mistake in smetkas\n");
+         return;
+    }
+
+    scanf("%d.2f",money_from_to);
+
+    if(money_from_to > from->balans)
+    {
+        printf("Not enouhg money!\n");
+        return;
+    }
+
+    from->balans -= money_from_to;
+    to->balans += money_from_to;
+
+    char code[250];
+    random_string(250, code);
+
+    add_transaction(transaction, name_smetka1, name_smetka2, money_from_to, code);
+
+}
+
+
