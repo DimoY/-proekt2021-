@@ -1,5 +1,6 @@
-#ifndef FUNCTIONS_H_INCLUDED
-#define FUNCTIONS_H_INCLUDED
+#ifndef MAIN_H
+#define MAIN_H
+
 struct user{
     char name[100];
     char pass[100];

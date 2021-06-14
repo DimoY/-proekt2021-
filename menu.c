@@ -1,9 +1,21 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "menu.h"
+
 #include "crypt_func_and_reg_and_log.h"
 #include "danni_i_funcii.h"
+#include "menu.h"
+
+void navigator(int action){
+    struct user_t* users_t = load_users();
+    if(action == 3){
+        return ;
+    }
+    action = first_menu();
+    first_menu_navigator(action,&users_t);
+        
+}
+
 
 int first_menu(){
 
@@ -135,12 +147,3 @@ void first_menu_navigator(int action, struct user_t *users_t){
     }
 }
 
-void navigator(int action){
-    struct user_t users_t = load_users();
-    if(action == 3){
-        return ;
-    }
-    action = first_menu();
-    first_menu_navigator(action,&users_t);
-        
-}
