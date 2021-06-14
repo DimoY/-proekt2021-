@@ -1,4 +1,5 @@
 #include "danni_i_funcii.h"
+#include "crypt_func_and_reg_and_log.h"
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
