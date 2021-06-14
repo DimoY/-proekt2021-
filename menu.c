@@ -42,7 +42,8 @@ int login(struct user_t* users_t){
     fgets(pass, 250, stdin);
     pass[strcspn(pass, "\n")] = 0;
     crypt(pass);
-    
+    //ne raboti
+/////////
     if(check_user(users_t,username,pass) == 1){
         int action =  ok_login();
         if(action == 1){
@@ -72,7 +73,7 @@ int login(struct user_t* users_t){
     else printf("No such account foundet\n Try again or Sign up:");
   return 0;
 }
-
+//ne raboti
 int signup(struct user_t* users_t){
     char username[251];
     char pass[250];
@@ -84,6 +85,7 @@ int signup(struct user_t* users_t){
     pass[strcspn(pass, "\n")] = 0;
     crypt(pass);
     add_user(users_t,username,pass);
+    save_users(users_t);
     return 0;
 }
 
@@ -134,7 +136,7 @@ void first_menu_navigator(int action, struct user_t *users_t){
 }
 
 void navigator(int action){
-    struct user_t users_t = {NULL};
+    struct user_t users_t = load_users();
     if(action == 3){
         return ;
     }
