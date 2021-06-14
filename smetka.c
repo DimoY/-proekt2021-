@@ -43,12 +43,12 @@ struct user* return_user_from_smetka(struct smetka* smetka,struct user_t* user_t
 
 struct smetka* smetka_by_spec(struct smetka_t* smetka_t,char spec[250]){
     struct smetka* elem = smetka_t->head;
-    if(strcmp(elem->spec,spec)!=0){
+    if(strcmp(elem->spec,spec)==0){
         return elem;
     }
     elem = elem->next;
     while (elem!=NULL){
-        if(strcmp(elem->spec,spec)!=0){
+        if(strcmp(elem->spec,spec)==0){
             return elem;
         }
         elem = elem->next;
