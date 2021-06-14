@@ -43,7 +43,7 @@ struct user* return_user_from_smetka(struct smetka* smetka,struct user_t* user_t
 
 struct smetka* smetka_by_spec(struct smetka_t* smetka_t,char spec[250]){
     struct smetka* elem = smetka_t->head;
-    if(strcmp(elem->spec,spec)!=0){
+    if(strcmp(elem->spec,spec) == 0){
         return elem;
     }
     elem = elem->next;
@@ -54,4 +54,53 @@ struct smetka* smetka_by_spec(struct smetka_t* smetka_t,char spec[250]){
         elem = elem->next;
         
     }
+    return NULL;
+}
+
+void withdraw(struct smetka_t* smetka, char name_smetka[])
+{
+    int money_to_withdraw = 0;
+
+    struct smetka* first = smetka_by_spec(smetka, name_smetka);
+
+
+    if(first != NULL)
+    {
+        printf("This smetka's name doesn't exist\n");
+        return ; 
+    }
+    
+    scanf("%d.2f",&money_to_withdraw);
+
+    if(money_to_withdraw > first->balans)
+    {
+        printf("The money are more than in the smetka\n");    
+        return ; 
+    }
+
+    else
+    {
+        first->balans -= money_to_withdraw;
+
+        printf("Successful withdraw!");
+    }
+
+}
+
+void deposit(struct smetka_t* smetka, char name_smetka[])
+{
+    int money_to_deposit = NULL;
+
+    struct smetka* first = smetka_by_spec(smetka, name_smetka);
+
+     if(first != NULL)
+    {
+        printf("This smetka's name doesn't exist\n");
+        return ; 
+    }
+
+    scanf("%d.2f",&money_to_deposit);
+
+    first ->balans += money_to_deposit;
+    printf("Successful deposit!");
 }
