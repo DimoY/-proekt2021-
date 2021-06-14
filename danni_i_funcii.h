@@ -43,7 +43,7 @@ struct user* return_user_from_smetka(struct smetka* smetka,struct user_t* user_t
 struct smetka* smetka_by_spec(struct smetka_t* smetka_t,char spec[250]);
 void return_users_from_trans(struct transaction* transaction,struct user_t* user_t,struct smetka_t* smetka_t,struct user* list[2]);
 int check_user(struct user_t* user_t,char name[250],char pass[250]);
-void transfer(struct smetka_t* smetka, char name_smetka1[], char name_smetka2[]);
+void transfer(struct transaction_t* transaction, struct smetka_t* smetka, char name_smetka1[], char name_smetka2[]);
 void deposit(struct smetka_t* smetka, char name_smetka[]);
 void withdraw(struct smetka_t* smetka, char name_smetka[]);
 
