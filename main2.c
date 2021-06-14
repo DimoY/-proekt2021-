@@ -33,8 +33,6 @@ void Login(struct user_t* users_t){
 }
 int main(int argc, char const *argv[])
 {
-    FILE *fp;
-    fp = fopen("users.db","w+");
     char word[250];
     random_string(250,word);
     struct user_t users_t = {NULL};

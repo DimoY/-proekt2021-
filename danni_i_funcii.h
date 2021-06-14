@@ -46,6 +46,21 @@ int check_user(struct user_t* user_t,char name[250],char pass[250]);
 void transfer(struct smetka_t* smetka, char name_smetka1[], char name_smetka2[]);
 void deposit(struct smetka_t* smetka, char name_smetka[]);
 void withdraw(struct smetka_t* smetka, char name_smetka[]);
+
+
+// Save & Load functions
+void save_users(struct user_t *users);
+struct user_t *load_users();
+
+void save_smetki(struct smetka_t *smetki);
+struct smetka_t *load_smetki();
+
+void save_transactions(struct transaction_t *transactions);
+struct transaction_t *load_transactions();
+
+// Process transactions
+void process_transactions(struct transaction_t *txn_list, struct smetka_t *smetki);
+
 #endif
 
 
