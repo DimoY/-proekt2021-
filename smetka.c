@@ -1,4 +1,5 @@
 #include "danni_i_funcii.h"
+#include "crypt_func_and_reg_and_log.h"
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
@@ -117,7 +118,7 @@ void transfer(struct transaction_t* transaction, struct smetka_t* smetka, char n
          return;
     }
 
-    scanf("%d.2f",money_from_to);
+    scanf("%d.2f",&money_from_to);
 
     if(money_from_to > from->balans)
     {
