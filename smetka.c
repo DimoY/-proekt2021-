@@ -84,6 +84,7 @@ void withdraw(struct smetka_t* smetka, char name_smetka[])
 
         printf("Successful withdraw!");
     }
+    save_smetki(smetka);
 
 }
 
@@ -103,6 +104,8 @@ void deposit(struct smetka_t* smetka, char name_smetka[])
 
     first ->balans += money_to_deposit;
     printf("Successful deposit!");
+
+    save_smetki(smetka);
 }
 
 void transfer(struct transaction_t* transaction, struct smetka_t* smetka, char name_smetka1[], char name_smetka2[])
@@ -131,7 +134,9 @@ void transfer(struct transaction_t* transaction, struct smetka_t* smetka, char n
 
     char code[250];
     random_string(250, code);
-
+    
+    save_transactions(transaction);
+    
     add_transaction(transaction, name_smetka1, name_smetka2, money_from_to, code);
 
 }
