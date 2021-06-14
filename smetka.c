@@ -117,7 +117,7 @@ void transfer(struct transaction_t* transaction, struct smetka_t* smetka, char n
          return;
     }
 
-    scanf("%d.2f",money_from_to);
+    scanf("%d.2f",&money_from_to);
 
     if(money_from_to > from->balans)
     {
