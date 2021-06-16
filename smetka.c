@@ -67,16 +67,16 @@ void withdraw(struct smetka_t* smetka, char name_smetka[])
 
     if(first == NULL)
     {
-        printf("This smetka's name doesn't exist\n");
+        printf("\nThis smetka's name doesn't exist");
         return ; 
     }
     
-    printf("How much to withdraw\n");
+    printf("\nHow much to withdraw \n");
     scanf("%d.2f",&money_to_withdraw);
 
     if(money_to_withdraw > first->balans)
     {
-        printf("The money are more than in the smetka\n");    
+        printf("\nThe money are more than in the smetka");    
         return ; 
     }
 
@@ -84,7 +84,7 @@ void withdraw(struct smetka_t* smetka, char name_smetka[])
     {
         first->balans -= money_to_withdraw;
 
-        printf("Successful withdraw!");
+        printf("\nSuccessful withdraw!");
     }
     save_smetki(smetka);
 
@@ -98,15 +98,15 @@ void deposit(struct smetka_t* smetka, char name_smetka[])
 
     if(first == NULL)
     {
-        printf("This smetka's name doesn't exist\n");
+        printf("\nThis smetka's name doesn't exist");
         return ; 
     }
 
-    printf("How much to deposit\n");
+    printf("\nHow much to deposit ");
     scanf("%d.2f",&money_to_deposit);
 
     first ->balans += money_to_deposit;
-    printf("Successful deposit!\n");
+    printf("\nSuccessful deposit!");
 
     save_smetki(smetka);
 }
@@ -120,23 +120,14 @@ void transfer(struct transaction_t* transaction, struct smetka_t* smetka, char n
 
     if(from == NULL || to == NULL)
     {
-         printf("Mistake in smetkas\n");
+         printf("\nMistake in smetkas");
          return;
     }
     
-    printf("How much to transfer\n");
+    printf("How much to transfer \n");
     scanf("%d.2f",&money_from_to);
 
-    if(money_from_to > from->balans)
-    {
-        printf("Not enouhg money!\n");
-        return;
-    }
-
-    from->balans -= money_from_to;
-    to->balans += money_from_to;
-
-    printf("Successful transfer!\n");
+    printf("\nSuccessful transfer!\n");
 
     char code[250];
     random_string(250, code);

@@ -50,9 +50,11 @@ int main(int argc, char const *argv[])
     add_transaction(&transaction_t, "rt", "aq",2,"sdfgh");
     save_transactions(&transaction_t);
     load_transactions();
-    deposit(&smetka_t, "dfdfg");
-    withdraw(&smetka_t, "dfdfg");
-    transfer(&transaction_t, &smetka_t, "dfdfg", "dfd");
-    
+    deposit(&smetka_t, "Dimo");
+    withdraw(&smetka_t, "Dimo");
+    transfer(&transaction_t, &smetka_t, "Dimo", "Qna");
+    transfer(&transaction_t, &smetka_t, "Qna", "Dimo");
+    process_transactions(&transaction_t, &smetka_t);
+    printf("%d",&smetka_t.head->balans);
     return 0;
 }
