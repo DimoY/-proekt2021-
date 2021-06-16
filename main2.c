@@ -52,6 +52,7 @@ int main(int argc, char const *argv[])
     deposit(&smetka_t, "Dimo");
     withdraw(&smetka_t, "Dimo");
     transfer(&transaction_t, &smetka_t, "Dimo", "Qna");
+    process_transactions(&transaction_t, &smetka_t);
     transfer(&transaction_t, &smetka_t, "Qna", "Dimo");
     process_transactions(&transaction_t, &smetka_t);
     return 0;

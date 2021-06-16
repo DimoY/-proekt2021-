@@ -5,8 +5,8 @@
 
 void process_transaction(struct transaction *txn, struct smetka_t *smetki)
 {
-    struct smetka *from = smetka_by_spec(smetki, txn->spec1);
-    struct smetka *to = smetka_by_spec(smetki, txn->spec2);
+    struct smetka *to = smetka_by_spec(smetki, txn->spec1);
+    struct smetka *from = smetka_by_spec(smetki, txn->spec2);
 
     if (from == NULL)
     {
