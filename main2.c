@@ -41,6 +41,14 @@ int main(int argc, char const *argv[])
     Register(&users_t);
     Register(&users_t);
     printf("found %s",user_by_id(&users_t,2)->name);
-    save_usering(&users_t);
+    save_user(&users_t);
+    load_users();
+    add_smetka(&smetka_t, "dfdfg", 23);
+    add_smetka(&smetka_t, "dfdfg", 23);
+    save_smetki(&smetka_t);
+    load_smetki();
+    add_transaction(&transaction_t, "rt", "aq",2,"sdfgh");
+    save_transactions(&transaction_t);
+    load_transactions();
     return 0;
 }

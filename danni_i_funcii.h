@@ -42,7 +42,12 @@ struct user* user_by_id(struct user_t* user_t,int id);
 struct user* return_user_from_smetka(struct smetka* smetka,struct user_t* user_t);
 struct smetka* smetka_by_spec(struct smetka_t* smetka_t,char spec[250]);
 int check_user(struct user_t* user_t,char name[250],char pass[250]);
-void save_usering(struct user_t *users);
+void save_user(struct user_t *users);
+struct user_t *load_users();
+void save_smetki(struct smetka_t *smetki);
+struct smetka_t *load_smetki();
+void save_transactions(struct transaction_t *transactions);
+struct transaction_t *load_transactions();
 #endif
 
 
