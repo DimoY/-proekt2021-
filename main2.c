@@ -43,18 +43,24 @@ int main(int argc, char const *argv[])
     printf("found %s",user_by_id(&users_t,2)->name);
     save_user(&users_t);
     load_users();
-    add_smetka(&smetka_t, "dfdfg", 23);
-    add_smetka(&smetka_t, "dfd", 23);
+    add_smetka(&smetka_t, "Dimo", 23);
+    add_smetka(&smetka_t, "Qna", 23);
     save_smetki(&smetka_t);
     load_smetki();
-    add_transaction(&transaction_t, "rt", "aq",2,"sdfgh");
     save_transactions(&transaction_t);
     load_transactions();
     deposit(&smetka_t, "Dimo");
     withdraw(&smetka_t, "Dimo");
     transfer(&transaction_t, &smetka_t, "Dimo", "Qna");
+    printf("%s=%d\n%s=%d\n",smetka_t.head->spec,smetka_t.head->balans,smetka_t.head->next->spec,smetka_t.head->next->balans);
     transfer(&transaction_t, &smetka_t, "Qna", "Dimo");
+    printf("%s=%d\n%s=%d\n",smetka_t.head->spec,smetka_t.head->balans,smetka_t.head->next->spec,smetka_t.head->next->balans);
     process_transactions(&transaction_t, &smetka_t);
-    printf("%d",smetka_t.head->balans);
+    printf("%s=%d\n%s=%d",smetka_t.head->spec,smetka_t.head->balans,smetka_t.head->next->spec,smetka_t.head->next->balans);
     return 0;
 }
+
+//Dimo 120
+//Dimo 100
+//Dimo 80 Qna 20
+//Dimo 90 Qna 10

@@ -45,12 +45,12 @@ struct user* return_user_from_smetka(struct smetka* smetka,struct user_t* user_t
 
 struct smetka* smetka_by_spec(struct smetka_t* smetka_t,char spec[250]){
     struct smetka* elem = smetka_t->head;
-    if(strcmp(elem->spec,spec)!=0){
+    if(strcmp(elem->spec,spec)==0){
         return elem;
     }
     elem = elem->next;
     while (elem!=NULL){
-        if(strcmp(elem->spec,spec)!=0){
+        if(strcmp(elem->spec,spec)==0){
             return elem;
         }
         elem = elem->next;
@@ -132,7 +132,7 @@ void transfer(struct transaction_t* transaction, struct smetka_t* smetka, char n
     char code[250];
     random_string(250, code);
     
-    add_transaction(transaction, name_smetka1, name_smetka2, money_from_to, code);
+    add_transaction(transaction, name_smetka2, name_smetka1, money_from_to, code);
 
     save_transactions(transaction);
 }
