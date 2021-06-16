@@ -1,6 +1,8 @@
-#include "danni_i_funcii.h"
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
+#include "crypt_func_and_reg_and_log.h"
+#include "danni_i_funcii.h"
 
 
 void add_smetka(struct smetka_t* smetka_t,char spec[250],int user_id){
@@ -52,7 +54,95 @@ struct smetka* smetka_by_spec(struct smetka_t* smetka_t,char spec[250]){
             return elem;
         }
         elem = elem->next;
-        
+     }
+     return NULL;
+}
+
+void withdraw(struct smetka_t* smetka, char name_smetka[])
+{
+    int money_to_withdraw = 0;
+
+    struct smetka* first = smetka_by_spec(smetka, name_smetka);
+
+
+    if(first == NULL)
+    {
+        printf("This smetka's name doesn't exist\n");
+        return ; 
     }
+    
+    printf("How much to withdraw\n");
+    scanf("%d.2f",&money_to_withdraw);
+
+    if(money_to_withdraw > first->balans)
+    {
+        printf("The money are more than in the smetka\n");    
+        return ; 
+    }
+
+    else
+    {
+        first->balans -= money_to_withdraw;
+
+        printf("Successful withdraw!");
+    }
+    save_smetki(smetka);
+
+}
+
+void deposit(struct smetka_t* smetka, char name_smetka[])
+{
+    int money_to_deposit = 0;
+
+    struct smetka* first = smetka_by_spec(smetka, name_smetka);
+
+    if(first == NULL)
+    {
+        printf("This smetka's name doesn't exist\n");
+        return ; 
+    }
+
+    printf("How much to deposit\n");
+    scanf("%d.2f",&money_to_deposit);
+
+    first ->balans += money_to_deposit;
+    printf("Successful deposit!\n");
+
+    save_smetki(smetka);
+}
+
+void transfer(struct transaction_t* transaction, struct smetka_t* smetka, char name_smetka1[], char name_smetka2[])
+{
+    int money_from_to = 0;
+
+     struct smetka* from = smetka_by_spec(smetka, name_smetka1);
+     struct smetka* to = smetka_by_spec(smetka, name_smetka2);
+
+    if(from == NULL || to == NULL)
+    {
+         printf("Mistake in smetkas\n");
+         return;
+    }
+    
+    printf("How much to transfer\n");
+    scanf("%d.2f",&money_from_to);
+
+    if(money_from_to > from->balans)
+    {
+        printf("Not enouhg money!\n");
+        return;
+    }
+
+    from->balans -= money_from_to;
+    to->balans += money_from_to;
+
+    printf("Successful transfer!\n");
+
+    char code[250];
+    random_string(250, code);
+    
+    add_transaction(transaction, name_smetka1, name_smetka2, money_from_to, code);
+
+    save_transactions(transaction);
 }
 

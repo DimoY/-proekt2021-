@@ -44,11 +44,15 @@ int main(int argc, char const *argv[])
     save_user(&users_t);
     load_users();
     add_smetka(&smetka_t, "dfdfg", 23);
-    add_smetka(&smetka_t, "dfdfg", 23);
+    add_smetka(&smetka_t, "dfd", 23);
     save_smetki(&smetka_t);
     load_smetki();
     add_transaction(&transaction_t, "rt", "aq",2,"sdfgh");
     save_transactions(&transaction_t);
     load_transactions();
+    deposit(&smetka_t, "dfdfg");
+    withdraw(&smetka_t, "dfdfg");
+    transfer(&transaction_t, &smetka_t, "dfdfg", "dfd");
+    
     return 0;
 }
