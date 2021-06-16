@@ -35,8 +35,3 @@ void remove_transaction(struct transaction_t* transaction_t,char cod[250]){
     }
 }
 
-
-void return_users_from_trans(struct transaction* transaction,struct user_t* user_t,struct smetka_t* smetka_t,struct user* list[2]){
-    list[0] = return_user_from_smetka(smetka_by_spec(smetka_t,transaction->spec1),user_t);
-    list[1] = return_user_from_smetka(smetka_by_spec(smetka_t,transaction->spec2),user_t);
-}
