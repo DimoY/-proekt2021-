@@ -40,8 +40,7 @@ int main(int argc, char const *argv[])
     struct transaction_t transaction_t = {NULL};
     Register(&users_t);
     Register(&users_t);
-    Register(&users_t);
-    Register(&users_t);
     printf("found %s",user_by_id(&users_t,2)->name);
+    save_usering(&users_t);
     return 0;
 }
