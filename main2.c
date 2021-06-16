@@ -3,6 +3,7 @@
 #include <string.h>
 #include "crypt_func_and_reg_and_log.h"
 #include "danni_i_funcii.h"
+#include "menu.h"
 
 void Register(struct user_t* users_t){
     char username[251];
@@ -31,14 +32,12 @@ void Login(struct user_t* users_t){
 }
 int main(int argc, char const *argv[])
 {
-    FILE *fp;
-    fp = fopen("users.db","w+");
-    char word[250];
-    random_string(250,word);
     struct user_t users_t = {NULL};
     struct smetka_t smetka_t = {NULL};
     struct transaction_t transaction_t = {NULL,NULL};
-    Register(&users_t);
+    navigator(0);
+    
+    /*Register(&users_t);
     Register(&users_t);
     printf("found %s",user_by_id(&users_t,2)->name);
     save_user(&users_t);
@@ -54,7 +53,7 @@ int main(int argc, char const *argv[])
     transfer(&transaction_t, &smetka_t, "Dimo", "Qna");
     process_transactions(&transaction_t, &smetka_t);
     transfer(&transaction_t, &smetka_t, "Qna", "Dimo");
-    process_transactions(&transaction_t, &smetka_t);
+    process_transactions(&transaction_t, &smetka_t);*/
     return 0;
 }
 
