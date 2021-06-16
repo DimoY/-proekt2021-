@@ -52,15 +52,8 @@ int main(int argc, char const *argv[])
     deposit(&smetka_t, "Dimo");
     withdraw(&smetka_t, "Dimo");
     transfer(&transaction_t, &smetka_t, "Dimo", "Qna");
-    printf("%s=%d\n%s=%d\n",smetka_t.head->spec,smetka_t.head->balans,smetka_t.head->next->spec,smetka_t.head->next->balans);
     transfer(&transaction_t, &smetka_t, "Qna", "Dimo");
-    printf("%s=%d\n%s=%d\n",smetka_t.head->spec,smetka_t.head->balans,smetka_t.head->next->spec,smetka_t.head->next->balans);
     process_transactions(&transaction_t, &smetka_t);
-    printf("%s=%d\n%s=%d",smetka_t.head->spec,smetka_t.head->balans,smetka_t.head->next->spec,smetka_t.head->next->balans);
     return 0;
 }
 
-//Dimo 120
-//Dimo 100
-//Dimo 80 Qna 20
-//Dimo 90 Qna 10
