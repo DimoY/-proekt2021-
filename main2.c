@@ -37,7 +37,7 @@ int main(int argc, char const *argv[])
     random_string(250,word);
     struct user_t users_t = {NULL};
     struct smetka_t smetka_t = {NULL};
-    struct transaction_t transaction_t = {NULL};
+    struct transaction_t transaction_t = {NULL,NULL};
     Register(&users_t);
     Register(&users_t);
     printf("found %s",user_by_id(&users_t,2)->name);
@@ -55,6 +55,6 @@ int main(int argc, char const *argv[])
     transfer(&transaction_t, &smetka_t, "Dimo", "Qna");
     transfer(&transaction_t, &smetka_t, "Qna", "Dimo");
     process_transactions(&transaction_t, &smetka_t);
-    printf("%d",&smetka_t.head->balans);
+    printf("%d",smetka_t.head->balans);
     return 0;
 }
