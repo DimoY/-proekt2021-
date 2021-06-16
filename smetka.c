@@ -18,7 +18,7 @@ void add_smetka(struct smetka_t* smetka_t,char spec[250],int user_id){
 void remove_smetka(struct smetka_t* smetka_t,char spec[250]){
     struct smetka* elem = smetka_t->head;
     struct smetka* elem_last = smetka_t->head;
-    if(strcmp(elem->spec,spec)!=0){
+    if(strcmp(elem->spec,spec)==0){
         struct smetka* elem_next = elem->next;
         smetka_t->head = elem_next;
         free(elem);
@@ -26,7 +26,7 @@ void remove_smetka(struct smetka_t* smetka_t,char spec[250]){
     }
     elem = elem->next;
     while (elem!=NULL){
-        if(strcmp(elem->spec,spec)!=0){
+        if(strcmp(elem->spec,spec)==0){
             struct smetka* elem_next = elem->next;
             elem_last->next = elem_next;
             free(elem);
