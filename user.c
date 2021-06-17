@@ -58,16 +58,18 @@ struct user* user_by_id(struct user_t* user_t,int id){
 }
 int check_user(struct user_t* user_t,char name[100],char pass[100]){
     struct user* elem = user_t->head;
-    if(strcmp(elem->name,name)==0 && strcmp(elem->pass,pass)==0){
-        return 1;
-    }
-    elem = elem->next;
-    while (elem!=NULL){
+    if(elem != NULL){
+
         if(strcmp(elem->name,name)==0 && strcmp(elem->pass,pass)==0){
             return 1;
         }
         elem = elem->next;
-        
+        while (elem!=NULL){
+            if(strcmp(elem->name,name)==0 && strcmp(elem->pass,pass)==0){
+                return 1;
+            }
+            elem = elem->next;   
+        }
     }
     return 0;
 }
