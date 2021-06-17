@@ -6,14 +6,13 @@
 {
     FILE *fp = fopen("users.db", "w");
 
-    for (struct user *user = users->head; user != NULL; user = user->next)
+    for (struct user *user = users->head; user->next != NULL; user = user->next)
     { printf("1\n");
         fwrite(user->name, sizeof(char), 100, fp);
         fwrite(user->pass, sizeof(char), 100, fp);
     }
 
     fclose(fp);
-    printf("1\n");
 }
 
 struct user_t *load_users()

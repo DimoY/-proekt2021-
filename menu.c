@@ -6,8 +6,6 @@
 #include "danni_i_funcii.h"
 #include "menu.h"
 
-int users_ids = 1;
-
 int first_menu(){
 
     char option[50]; 
@@ -96,13 +94,13 @@ int login(struct user_t* users_t,struct smetka_t *smetki_t){
             navigator(1);
         }
     }
-    else{ printf("No such account foundet\n Try again or Sign up:\n");
+    else{ printf("No such account founded. Try again or Sign up:\n");
         label: fgets(option, 100, stdin);
         if(strstr(option,"Try again")){
-            login(users_t,smetki_t);
+            login(&users_t,&smetki_t);
         }
         else if(strstr(option, "Sign up")){
-            signup(users_t,smetki_t);
+            signup(&users_t,&smetki_t);
         }
         else{
             printf("Invalide action. Please Try again or Sign up:\n");
@@ -114,8 +112,10 @@ int login(struct user_t* users_t,struct smetka_t *smetki_t){
 }
 
 int signup(struct user_t* users_t,struct smetka_t *smetki_t){
+    static int users_ids = 1;
     char username[100];
     char pass[100];
+    
     printf("Username:");
     fgets(username,100,stdin);
     username[strcspn(username, "\n")] = 0;
@@ -123,25 +123,26 @@ int signup(struct user_t* users_t,struct smetka_t *smetki_t){
     fgets(pass,100,stdin);
     pass[strcspn(pass, "\n")] = 0;
     crypt(pass);   
-    add_user(users_t,username,pass);
-    add_smetka(smetki_t,username,users_ids++); 
-    //save_user(users_t);
+    add_user(&users_t,username,pass);
+    add_smetka(&smetki_t,username,users_ids++); 
+    save_user(&users_t);
+    save_smetki(&smetki_t);
     return 0;
 }
 
 
 void first_menu_navigator(int action, struct user_t *users_t,struct smetka_t *smetki_t){
     if(action == 1){
-        login(users_t,smetki_t);
+        login(&users_t,&smetki_t);
     }
     else if(action == 2){
-            signup(users_t,smetki_t);
+            signup(&users_t,&smetki_t);
         }     
 }
 
 void navigator(int action){
     int i = 0;
-        struct user_t* users_t = {NULL};
+        struct user_t* users_t = load_users();
         struct smetka_t* smetki_t = load_smetki();
     while(action != 3){
         action = first_menu();

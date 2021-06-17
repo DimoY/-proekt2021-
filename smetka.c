@@ -12,7 +12,7 @@ void add_smetka(struct smetka_t* smetka_t,char spec[250],int user_id){
     new->user_id = user_id;
     new->next = smetka_t->head;
     smetka_t->head = new;
-    return;
+  //  return;
 }
 
 void remove_smetka(struct smetka_t* smetka_t,char spec[250]){
@@ -67,7 +67,7 @@ void withdraw(struct smetka_t* smetka, char name_smetka[])
 
     if(first == NULL)
     {
-        printf("\nThis smetka's name doesn't exist");
+        printf("\nThis smetka's name doesn't exist\n");
         return ; 
     }
     
@@ -98,7 +98,7 @@ void deposit(struct smetka_t* smetka, char name_smetka[])
 
     if(first == NULL)
     {
-        printf("\nThis smetka's name doesn't exist");
+        printf("\nThis smetka's name doesn't exist\n");
         return ; 
     }
 
@@ -120,7 +120,7 @@ void transfer(struct transaction_t* transaction, struct smetka_t* smetka, char n
 
     if(from == NULL || to == NULL)
     {
-         printf("\nMistake in smetkas");
+         printf("\nMistake in smetkas\n");
          return;
     }
     
