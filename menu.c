@@ -9,12 +9,12 @@
 
 int first_menu(){
 
-    char option[10]; 
+    char option[50]; 
     int flag = 0;
 
     while(flag == 0){
     printf("Sign in\nSign up\nExit\n");
-    fgets(option, 10, stdin);
+    fgets(option, 50, stdin);
 
     if(strstr(option,"Sign in")){
         flag++;
@@ -26,6 +26,7 @@ int first_menu(){
     }
     else if(strstr(option,"Exit")){
         flag++;
+        printf("idk");
         return 3;
     }
     printf("You have selected invalite action. Please select again.\n");
@@ -65,11 +66,11 @@ int ok_login(){
 }
 
 
-int login(struct user_t* users_t){
+int login(struct user_t* users_t,struct smetka_t *smetki_t){
     char username[100];
     char pass[100];
     char option[100];
-    
+
     printf("Username:");
     fgets(username, 100, stdin);
     username[strcspn(username, "\n")] = 0;
@@ -78,17 +79,18 @@ int login(struct user_t* users_t){
     fgets(pass, 100, stdin);
     pass[strcspn(pass, "\n")] = 0;
     crypt(pass);
+    printf("1\n");
 //printing first menu after every run 
     if(check_user(users_t,username,pass) == 1){
         int action =  ok_login();
-
+        printf("1\n");
         if(action == 1){
             printf("Deposit sUS");
-            //deposit
+            //deposit(struct smetka_t* smetka, char name_smetka[]);
         }
         else if(action == 2){
             printf("Withdrawal sUS");
-            //withdrawal
+           // withdraw(struct smetka_t* smetka, char name_smetka[]);
         }
         else if(action == 3){
             printf("Transfer sUS");
@@ -102,17 +104,17 @@ int login(struct user_t* users_t){
         else if(action == 5){
             printf("................\n");
             //Log out
-            first_menu();
+            navigator(1);
 
         }
     }
     else{ printf("No such account foundet\n Try again or Sign up:\n");
         label: fgets(option, 100, stdin);
         if(strstr(option,"Try again")){
-            login(users_t);
+            login(users_t,smetki_t);
         }
         else if(strstr(option, "Sign up")){
-            signup(users_t);
+            signup(users_t,smetki_t);
         }
         else{
             printf("Invalide action. Please Try again or Sign up:\n");
@@ -123,7 +125,7 @@ int login(struct user_t* users_t){
   return 0;
 }
 
-int signup(struct user_t* users_t){
+int signup(struct user_t* users_t,struct smetka_t *smetki_t){
     char username[100];
     char pass[100];
     printf("Username:");
@@ -141,15 +143,18 @@ int signup(struct user_t* users_t){
 }
 
 
-void first_menu_navigator(int action, struct user_t *users_t){
+void first_menu_navigator(int action, struct user_t *users_t,struct smetka_t *smetki_t){
     if(action == 1){
-        login(users_t);
+        printf("1\n");
+        login(users_t,smetki_t);
     }
     else{
         if(action == 2){
-            signup(users_t);
+            printf("2\n");
+            signup(users_t,smetki_t);
         }
         else{
+            printf("3\n");
             navigator(3);
         }       
     }
@@ -158,9 +163,10 @@ void first_menu_navigator(int action, struct user_t *users_t){
 void navigator(int action){
     int i = 0;
     struct user_t* users_t = load_users();
+    struct smetka_t* smetki_t = load_smetki();
     while(action != 3){
         action = first_menu();
-        first_menu_navigator(action,&users_t);
+        first_menu_navigator(action,&users_t,&smetki_t);
         while(i < 20){
             printf("\n");
             i++;
