@@ -93,8 +93,6 @@ int login(struct user_t* users_t,struct smetka_t *smetki_t){
             return;
         }
         else if(action == 4){
-            printf("................\n");
-            //Log out
             navigator(1);
         }
     }
@@ -143,11 +141,11 @@ void first_menu_navigator(int action, struct user_t *users_t,struct smetka_t *sm
 
 void navigator(int action){
     int i = 0;
-    struct user_t* users_t = load_users();
-    struct smetka_t* smetki_t = load_smetki();
+        struct user_t* users_t = {NULL};
+        struct smetka_t* smetki_t = load_smetki();
     while(action != 3){
         action = first_menu();
         first_menu_navigator(action,&users_t,&smetki_t);
     }
-return; 
+ return; 
 }
