@@ -43,4 +43,5 @@ void process_transactions(struct transaction_t *txn_list, struct smetka_t *smetk
         save_transactions(txn_list);
         txn = txn->next;
     }
+    printf("\nSuccessful transfer!\n");
 }

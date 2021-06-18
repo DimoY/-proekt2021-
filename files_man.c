@@ -7,7 +7,7 @@
     FILE *fp = fopen("users.db", "w");
 
     for (struct user *user = users->head; user->next != NULL; user = user->next)
-    { printf("1\n");
+    {
         fwrite(user->name, sizeof(char), 100, fp);
         fwrite(user->pass, sizeof(char), 100, fp);
     }

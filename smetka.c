@@ -127,7 +127,6 @@ void transfer(struct transaction_t* transaction, struct smetka_t* smetka, char n
     printf("How much to transfer: ");
     scanf("%d.2f",&money_from_to);
 
-    printf("\nSuccessful transfer!\n");
 
     char code[250];
     random_string(250, code);
