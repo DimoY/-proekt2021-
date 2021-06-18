@@ -71,12 +71,12 @@ void withdraw(struct smetka_t* smetka, char name_smetka[])
         return ; 
     }
     
-    printf("\nHow much to withdraw \n");
+    printf("\nHow much to withdraw: ");
     scanf("%d.2f",&money_to_withdraw);
 
     if(money_to_withdraw > first->balans)
     {
-        printf("\nThe money are more than in the smetka");    
+        printf("\nThe money are more than in the smetka\n");    
         return ; 
     }
 
@@ -84,7 +84,7 @@ void withdraw(struct smetka_t* smetka, char name_smetka[])
     {
         first->balans -= money_to_withdraw;
 
-        printf("\nSuccessful withdraw!");
+        printf("\nSuccessful withdraw!\n");
     }
     save_smetki(smetka);
 
@@ -102,11 +102,11 @@ void deposit(struct smetka_t* smetka, char name_smetka[])
         return ; 
     }
 
-    printf("\nHow much to deposit ");
+    printf("\nHow much to deposit: ");
     scanf("%d.2f",&money_to_deposit);
 
     first ->balans += money_to_deposit;
-    printf("\nSuccessful deposit!");
+    printf("\nSuccessful deposit!\n");
 
     save_smetki(smetka);
 }
@@ -124,7 +124,7 @@ void transfer(struct transaction_t* transaction, struct smetka_t* smetka, char n
          return;
     }
     
-    printf("How much to transfer \n");
+    printf("How much to transfer: ");
     scanf("%d.2f",&money_from_to);
 
     printf("\nSuccessful transfer!\n");
