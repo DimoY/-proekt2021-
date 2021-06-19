@@ -39,6 +39,7 @@ void remove_user(struct user_t* user_t,char name[250]);
 void add_smetka(struct smetka_t* smetka_t,char spec[250],int user_id);
 void add_transaction(struct transaction_t* smetka_t,char spec1[250],char spec2[250],int transaction,char cod[250]);
 void remove_smetka(struct smetka_t* smetka_t,char spec[250]);
+int user_by_name(struct user_t* user_t,char name[100]);
 struct user* user_by_id(struct user_t* user_t,int id);
 struct user* return_user_from_smetka(struct smetka* smetka,struct user_t* user_t);
 struct smetka* smetka_by_spec(struct smetka_t* smetka_t,char spec[250]);
