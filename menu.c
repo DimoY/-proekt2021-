@@ -84,7 +84,7 @@ int login(struct user_t* users_t,struct smetka_t *smetki_t, struct transaction_t
         }
         else if(action == 4){
             printf("\n============\n");
-            process_transaction(transactions_t->head, smetki_t);
+            process_transactions(transactions_t ,smetki_t);
         }
         else if(action == 0){
             printf("\n============\n");
