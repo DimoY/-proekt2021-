@@ -90,17 +90,17 @@ int login(struct user_t* users_t,struct smetka_t *smetki_t, struct transaction_t
         action =  ok_login();
         if(action == 1){
             printf("\n============\n");
-            deposit(smetki_t, username);
+            deposit(smetki_t, smetka);
         }
         else if(action == 2){
             printf("\n============\n");
-            withdraw(smetki_t, username);
+            withdraw(smetki_t, smetka);
         }
         else if(action == 3){
             printf("\n============\n");
             printf("Name of accout to transfer:\n");
             scanf("%s",username2);
-            transfer(transactions_t, smetki_t, username, username2);
+            transfer(transactions_t, smetki_t, smetka, username2);
             process_transaction(transactions_t->head, smetki_t);
         }
         else if(action == 4){
