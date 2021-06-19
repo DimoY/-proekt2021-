@@ -81,7 +81,7 @@ int login(struct user_t* users_t,struct smetka_t *smetki_t, struct transaction_t
             transfer(transactions_t, smetki_t, return_smetka_from_user(smetki_t, id_by_user(users_t,username))->spec, username2);
             process_transaction(transactions_t->head, smetki_t);
         }
-        else if(action == 4){
+        else if(action == 0){
             printf("\n============\n");
             navigator(1);
         }
