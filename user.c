@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 int add_user(struct user_t* user_t,char name[250],char pass[250]){
-    if(user_by_name(user_t,name)==1){
+    if(user_by_name(user_t,name)!=NULL){
         return -1;
     }
     struct user* new = (struct user*)malloc(sizeof(struct user));
@@ -13,64 +13,37 @@ int add_user(struct user_t* user_t,char name[250],char pass[250]){
     new->next = user_t->head;
     user_t->head = new;
     user_t->len+=1;
+    new->id = user_t->len;
     return user_t->len;
 }
 
-int user_by_name(struct user_t* user_t,char name[100]){
+struct user* user_by_name(struct user_t* user_t,char name[100]){
     struct user* elem = user_t->head;
     while (elem!=NULL){
         if(strcmp(elem->name,name)==0){
-            return 1;
-        }
-        elem = elem->next;
-     }
-     return 0;
-}
-
-struct user* user_by_id(struct user_t* user_t,int id){
-    id = user_t->len-id;
-    struct user* elem = user_t->head;
-    if(id == 0){
-        return elem;
-    }
-    elem = elem->next;
-    int i = 0;
-    while (elem!=NULL){
-        i++;
-        if(id == i){
             return elem;
         }
         elem = elem->next;
-        
-    }
-    return NULL;
+     }
+     return NULL;
 }
+
+
 int id_by_user(struct user_t* user_t,char name[100]){
     struct user* elem = user_t->head;
-    int i = 1;
     while (elem!=NULL){
         if(strcmp(elem->name,name)==0){
-            return i;
+            return elem->id;
         }
         elem = elem->next;
-        i++;
      }
      return -1;
 }
 int check_user(struct user_t* user_t,char name[100],char pass[100]){
-    
-    if(user_t->head != NULL){
-        struct user* elem = user_t->head;
-
-        if(strcmp(elem->name,name)==0 && strcmp(elem->pass,pass)==0){
+    struct user* elem = user_by_name(user_t,name);
+    if(elem!=NULL){
+        if(strcmp(pass,elem->pass)==0){
             return 1;
-        }
-        elem = elem->next;
-        while (elem!=NULL){
-            if(strcmp(elem->name,name)==0 && strcmp(elem->pass,pass)==0){
-                return 1;
-            }
-            elem = elem->next;   
         }
     }
     return 0;
@@ -78,7 +51,7 @@ int check_user(struct user_t* user_t,char name[100],char pass[100]){
 struct smetka* return_smetka_from_user(struct smetka_t* smetka,int id){
     struct smetka* elem = smetka->head;
     while (elem!=NULL){
-        if(elem->user_id = id){
+        if(elem->user_id == id){
             return elem;
         }
         elem = elem->next;
