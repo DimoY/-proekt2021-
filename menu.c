@@ -7,9 +7,9 @@
 
 int first_menu();
 int ok_login();
-int signup(struct user_t* users_t,struct smetka_t *smetki_t);
-int login(struct user_t* users_t,struct smetka_t *smetki_t,struct transaction_t* transactions_t);
-void first_menu_navigator(int action, struct user_t *users_t,struct smetka_t *smetki_t,struct transaction_t* transactions_t);
+int signup(struct user_t* users_t,struct smetka_t *smetki_t,char smetka[250]);
+int login(struct user_t* users_t,struct smetka_t *smetki_t, struct transaction_t* transactions_t,char smetka[250]);
+void first_menu_navigator(int action, struct user_t *users_t,struct smetka_t *smetki_t, struct transaction_t* transactions_t,char smetka[250]);
 void navigator(int action);
 
 int first_menu(){
@@ -68,7 +68,7 @@ int ok_login(){
 
 
 
-int login(struct user_t* users_t,struct smetka_t *smetki_t, struct transaction_t* transactions_t){
+int login(struct user_t* users_t,struct smetka_t *smetki_t, struct transaction_t* transactions_t,char smetka[250]){
     char username[100];
     char username2[100];
     char pass[100];
@@ -108,13 +108,14 @@ int login(struct user_t* users_t,struct smetka_t *smetki_t, struct transaction_t
             navigator(1);
         }
     }
-    else{ printf("No such account founded. Try again or Sign up:\n");
+    else{ 
+        printf("No such account founded. Try again or Sign up:\n");
         label: fgets(option, 100, stdin);
         if(strstr(option,"Try again")){
-            login(users_t,smetki_t,transactions_t);
+            login(users_t,smetki_t,transactions_t,smetka);
         }
         else if(strstr(option, "Sign up")){
-            signup(users_t,smetki_t);
+            signup(users_t,smetki_t,smetka);
         }
         else{
             printf("Invalide action. Please Try again or Sign up:\n");
@@ -124,13 +125,13 @@ int login(struct user_t* users_t,struct smetka_t *smetki_t, struct transaction_t
     }
   return 0;
 }
-void first_menu_navigator(int action, struct user_t *users_t,struct smetka_t *smetki_t, struct transaction_t* transactions_t){
+void first_menu_navigator(int action, struct user_t *users_t,struct smetka_t *smetki_t, struct transaction_t* transactions_t,char smetka[250]){
     if(action == 1){
-        login(users_t,smetki_t,transactions_t);
+        login(users_t,smetki_t,transactions_t,smetka);
         return;
     }
     else if(action == 2){
-            signup(users_t,smetki_t);
+            signup(users_t,smetki_t,smetka);
             return;
         }     
 }
@@ -139,10 +140,10 @@ void navigator(int action){
     struct user_t* users_t = load_users();
     struct smetka_t* smetki_t = load_smetki();
     struct transaction_t* transactions_t = load_transactions();
-
+    char smetka[250];
     while(action != 3){
         action = first_menu();
-        first_menu_navigator(action,users_t,smetki_t,transactions_t);
+        first_menu_navigator(action,users_t,smetki_t,transactions_t,smetka);
     }
  return; 
 }
