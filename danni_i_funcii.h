@@ -34,7 +34,7 @@ struct transaction_t{
     struct transaction* head;
     struct transaction* tail;
 };
-void add_user(struct user_t* user_t,char name[250],char pass[250]);
+int add_user(struct user_t* user_t,char name[250],char pass[250]);
 void remove_user(struct user_t* user_t,char name[250]);
 void add_smetka(struct smetka_t* smetka_t,char spec[250],int user_id);
 void add_transaction(struct transaction_t* smetka_t,char spec1[250],char spec2[250],int transaction,char cod[250]);
