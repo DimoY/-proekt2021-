@@ -4,13 +4,7 @@
 
 #include "crypt_func_and_reg_and_log.h"
 #include "danni_i_funcii.h"
-
-int first_menu();
-int ok_login();
-int signup(struct user_t* users_t,struct smetka_t *smetki_t,char smetka[250]);
-int login(struct user_t* users_t,struct smetka_t *smetki_t, struct transaction_t* transactions_t,char smetka[250]);
-void first_menu_navigator(int action, struct user_t *users_t,struct smetka_t *smetki_t, struct transaction_t* transactions_t,char smetka[250]);
-void navigator(int action);
+#include "menu.h"
 
 int first_menu(){
 
@@ -41,13 +35,13 @@ int ok_login(){
     int flag = 0;
 
         while(1){
-            printf("\nDeposit\n============\nWithdrawal\n============\nTransfer\n============\nExit\n============\n");
+            printf("\nDeposit\n============\nWithdraw\n============\nTransfer\n============\nExit\n============\n");
             scanf( "%s" , option ); 
             if(strstr(option,"Deposit")){
                 flag = 1;
                 break;
             }
-            else if(strstr(option,"Withdrawal")){
+            else if(strstr(option,"Withdraw")){
                     flag = 2;
                     break;
                 }   
