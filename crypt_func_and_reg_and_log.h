@@ -1,6 +1,6 @@
 
-#ifndef FUNCTIONS_Z_INCLUDED
-#define FUNCTIONS_Z_INCLUDED
+#ifndef FUNCTIONS_K_INCLUDED
+#define FUNCTIONS_K_INCLUDED
 #define RAND_STR "ABCDEFGHIGKLMNOPQRSTUVWXYZabcdefghigklmnopqrstuvwxyz0987654321!@#$^&*(){}:|?><"
 
 

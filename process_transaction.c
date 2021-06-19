@@ -1,7 +1,7 @@
-#include "danni_i_funcii.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "danni_i_funcii.h"
 
 void process_transaction(struct transaction *txn, struct smetka_t *smetki)
 {
@@ -29,6 +29,7 @@ void process_transaction(struct transaction *txn, struct smetka_t *smetki)
     from->balans -= txn->transaction;
     to->balans += txn->transaction;
     save_smetki(smetki);
+    printf("\nSuccessful transfer!\n");
 }
 
 void process_transactions(struct transaction_t *txn_list, struct smetka_t *smetki)
@@ -41,5 +42,6 @@ void process_transactions(struct transaction_t *txn_list, struct smetka_t *smetk
         txn_list->head = txn->next;
         free(txn);
         save_transactions(txn_list);
+        txn = txn->next;
     }
 }

@@ -1,25 +1,10 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef FUNCTIONS_Z_INCLUDED
+#define FUNCTIONS_Z_INCLUDED
 
-
-struct user{
-    char name[100];
-    char pass[100];
-    struct user * next;
-};
-
-struct user_t{
-    struct user* head;
-    int len;
-};
+void navigator(int action);
 int first_menu();
-void first_menu_navigator(int action, struct user_t* users_t);
-void navigator();
-
 int ok_login();
-int login(struct user_t* users_t);
-int signup(struct user_t* users_t);
-
-
-
+int signup(struct user_t* users_t,struct smetka_t *smetki_t);
+int login(struct user_t* users_t,struct smetka_t *smetki_t, struct transaction_t* transactions_t);
+void first_menu_navigator(int action, struct user_t *users_t,struct smetka_t *smetki_t, struct transaction_t* transactions_t);
 #endif

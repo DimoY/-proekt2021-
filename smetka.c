@@ -1,8 +1,8 @@
-#include "danni_i_funcii.h"
-#include "crypt_func_and_reg_and_log.h"
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include "crypt_func_and_reg_and_log.h"
+#include "danni_i_funcii.h"
 
 
 void add_smetka(struct smetka_t* smetka_t,char spec[250],int user_id){
@@ -12,15 +12,13 @@ void add_smetka(struct smetka_t* smetka_t,char spec[250],int user_id){
     new->user_id = user_id;
     new->next = smetka_t->head;
     smetka_t->head = new;
-    return;
+  //  return;
 }
 
 void remove_smetka(struct smetka_t* smetka_t,char spec[250]){
     struct smetka* elem = smetka_t->head;
     struct smetka* elem_last = smetka_t->head;
-    if(elem==NULL)
-        return;
-    if(strcmp(elem->spec,spec)!=0){
+    if(strcmp(elem->spec,spec)==0){
         struct smetka* elem_next = elem->next;
         smetka_t->head = elem_next;
         free(elem);
@@ -28,7 +26,7 @@ void remove_smetka(struct smetka_t* smetka_t,char spec[250]){
     }
     elem = elem->next;
     while (elem!=NULL){
-        if(strcmp(elem->spec,spec)!=0){
+        if(strcmp(elem->spec,spec)==0){
             struct smetka* elem_next = elem->next;
             elem_last->next = elem_next;
             free(elem);
@@ -47,14 +45,17 @@ struct user* return_user_from_smetka(struct smetka* smetka,struct user_t* user_t
 
 struct smetka* smetka_by_spec(struct smetka_t* smetka_t,char spec[250]){
     struct smetka* elem = smetka_t->head;
+    if(strcmp(elem->spec,spec)==0){
+        return elem;
+    }
+    elem = elem->next;
     while (elem!=NULL){
         if(strcmp(elem->spec,spec)==0){
             return elem;
         }
         elem = elem->next;
-        
-    }
-    return NULL;
+     }
+     return NULL;
 }
 
 void withdraw(struct smetka_t* smetka, char name_smetka[])
@@ -64,17 +65,18 @@ void withdraw(struct smetka_t* smetka, char name_smetka[])
     struct smetka* first = smetka_by_spec(smetka, name_smetka);
 
 
-    if(first != NULL)
+    if(first == NULL)
     {
-        printf("This smetka's name doesn't exist\n");
+        printf("\nThis smetka's name doesn't exist\n");
         return ; 
     }
     
+    printf("\nHow much to withdraw: ");
     scanf("%d.2f",&money_to_withdraw);
 
     if(money_to_withdraw > first->balans)
     {
-        printf("The money are more than in the smetka\n");    
+        printf("\nThe money are more than in the smetka\n");    
         return ; 
     }
 
@@ -82,7 +84,7 @@ void withdraw(struct smetka_t* smetka, char name_smetka[])
     {
         first->balans -= money_to_withdraw;
 
-        printf("Successful withdraw!");
+        printf("\nSuccessful withdraw!\n");
     }
     save_smetki(smetka);
 
@@ -94,16 +96,17 @@ void deposit(struct smetka_t* smetka, char name_smetka[])
 
     struct smetka* first = smetka_by_spec(smetka, name_smetka);
 
-    if(first != NULL)
+    if(first == NULL)
     {
-        printf("This smetka's name doesn't exist\n");
+        printf("\nThis smetka's name doesn't exist\n");
         return ; 
     }
 
+    printf("\nHow much to deposit: ");
     scanf("%d.2f",&money_to_deposit);
 
     first ->balans += money_to_deposit;
-    printf("Successful deposit!");
+    printf("\nSuccessful deposit!\n");
 
     save_smetki(smetka);
 }
@@ -117,28 +120,19 @@ void transfer(struct transaction_t* transaction, struct smetka_t* smetka, char n
 
     if(from == NULL || to == NULL)
     {
-         printf("Mistake in smetkas\n");
+         printf("\nMistake in smetkas\n");
          return;
     }
-
+    
+    printf("How much to transfer: ");
     scanf("%d.2f",&money_from_to);
 
-    if(money_from_to > from->balans)
-    {
-        printf("Not enouhg money!\n");
-        return;
-    }
-
-    from->balans -= money_from_to;
-    to->balans += money_from_to;
 
     char code[250];
     random_string(250, code);
     
+    add_transaction(transaction, name_smetka2, name_smetka1, money_from_to, code);
+
     save_transactions(transaction);
-    
-    add_transaction(transaction, name_smetka1, name_smetka2, money_from_to, code);
-
 }
-
 
