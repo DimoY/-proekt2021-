@@ -73,6 +73,7 @@ void withdraw(struct smetka_t* smetka, char name_smetka[])
     
     printf("\nHow much to withdraw \n");
     scanf("%d.2f",&money_to_withdraw);
+    getchar();
 
     if(money_to_withdraw > first->balans)
     {
@@ -104,6 +105,7 @@ void deposit(struct smetka_t* smetka, char name_smetka[])
 
     printf("\nHow much to deposit ");
     scanf("%d.2f",&money_to_deposit);
+    getchar();
 
     first ->balans += money_to_deposit;
     printf("\nSuccessful deposit!");
@@ -115,6 +117,7 @@ void transfer(struct transaction_t* transaction, struct smetka_t* smetka, char n
 {
     int money_from_to = 0;
 
+<<<<<<< Updated upstream
      struct smetka* from = smetka_by_spec(smetka, name_smetka1);
      struct smetka* to = smetka_by_spec(smetka, name_smetka2);
 
@@ -125,7 +128,11 @@ void transfer(struct transaction_t* transaction, struct smetka_t* smetka, char n
     }
     
     printf("How much to transfer \n");
+=======
+    printf("How much to transfer: ");
+>>>>>>> Stashed changes
     scanf("%d.2f",&money_from_to);
+    getchar();
 
     printf("\nSuccessful transfer!\n");
 
