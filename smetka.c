@@ -41,10 +41,6 @@ void remove_smetka(struct smetka_t* smetka_t,char spec[250]){
 
 struct smetka* smetka_by_spec(struct smetka_t* smetka_t,char spec[250]){
     struct smetka* elem = smetka_t->head;
-    if(strcmp(elem->spec,spec)==0){
-        return elem;
-    }
-    elem = elem->next;
     while (elem!=NULL){
         if(strcmp(elem->spec,spec)==0){
             return elem;
