@@ -5,14 +5,6 @@
 #include "crypt_func_and_reg_and_log.h"
 #include "danni_i_funcii.h"
 #include "menu.h"
-int first_menu();
-int ok_login();
-int signup(struct user_t* users_t,struct smetka_t *smetki_t);
-int login(struct user_t* users_t,struct smetka_t *smetki_t, struct transaction_t* transactions_t);
-void first_menu_navigator(int action, struct user_t *users_t,struct smetka_t *smetki_t, struct transaction_t* transactions_t);
-void navigator(int action);
-
-
 
 int first_menu(){
 
@@ -20,7 +12,7 @@ int first_menu(){
     int flag = 0;
     while(flag == 0){
     printf("1:Log\n============\n2:Register\n============\n0:Exit\n============ \n");
-    scanf("%d", option);
+    scanf("%d", &option);
     getchar();
 
     if(option == 1 || option == 2){
@@ -40,7 +32,8 @@ int ok_login(){
 
         while(1){
             printf("\n1:Deposit\n============\n2:Withdraw\n============\n3:Transfer\n============\n0:Exit\n============\n");
-            scanf( "%d" , option ); 
+            scanf( "%d" , &option ); 
+            getchar();
             if(option == 1 || option == 2 || option == 3 || option == 0){
                 break;
             }
@@ -49,8 +42,6 @@ int ok_login(){
     return option;
 
 }
-
-
 
 
 int login(struct user_t* users_t,struct smetka_t *smetki_t, struct transaction_t* transactions_t){
