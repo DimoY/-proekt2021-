@@ -31,10 +31,10 @@ int ok_login(){
     int option; 
 
         while(1){
-            printf("\n1:Deposit\n============\n2:Withdraw\n============\n3:Transfer\n============\n0:Exit\n============\n");
+            printf("\n1:Deposit\n============\n2:Withdraw\n============\n3:Transfer\n============\n4:Process Transaction\n============\n0:Exit\n============\n");
             scanf( "%d" , &option ); 
             getchar();
-            if(option == 1 || option == 2 || option == 3 || option == 0){
+            if(option == 1 || option == 2 || option == 3 || option == 4 || option == 0){
                 break;
             }
             printf("You have selected invalite action. Please select again.\n");
@@ -49,7 +49,7 @@ int login(struct user_t* users_t,struct smetka_t *smetki_t, struct transaction_t
     char username2[100];
     char pass[100];
     char option[100];
-    int action = 0;
+    int action = -1;
 
     printf("Username:");
     fgets(username, 100, stdin);
@@ -60,7 +60,7 @@ int login(struct user_t* users_t,struct smetka_t *smetki_t, struct transaction_t
     pass[strcspn(pass, "\n")] = 0;
     crypt(pass);
 
-   while (action!=4)
+   while (action!=0)
     {
         if(check_user(users_t,username,pass) == 1){
         action =  ok_login();
@@ -81,12 +81,16 @@ int login(struct user_t* users_t,struct smetka_t *smetki_t, struct transaction_t
             char m[250];
             strcpy(m,return_smetka_from_user(smetki_t, id_by_user(users_t,username2))->spec);
             transfer(transactions_t, smetki_t, return_smetka_from_user(smetki_t, id_by_user(users_t,username))->spec,m);
+        }
+        else if(action == 4){
+            printf("\n============\n");
             process_transaction(transactions_t->head, smetki_t);
         }
         else if(action == 0){
             printf("\n============\n");
             navigator(1);
         }
+        
     }
     else{ 
         printf("No such account founded. Try again or Sign up:\n");
