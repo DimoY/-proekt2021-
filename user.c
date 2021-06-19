@@ -16,31 +16,6 @@ int add_user(struct user_t* user_t,char name[250],char pass[250]){
     return user_t->len;
 }
 
-void remove_user(struct user_t* user_t,char name[250]){
-    struct user* elem = user_t->head;
-    struct user* elem_last = user_t->head;
-    if(strcmp(elem->name,name)!=0){
-        struct user* elem_next = elem->next;
-        user_t->head = elem_next;
-        free(elem);
-        user_t->len-=1;
-        return;
-    }
-    elem = elem->next;
-    while (elem!=NULL){
-        if(strcmp(elem->name,name)!=0){
-            struct user* elem_next = elem->next;
-            elem_last->next = elem_next;
-            free(elem);
-            user_t->len-=1;
-            return;
-        }
-        elem_last=elem;
-        elem = elem->next;
-        
-    }
-}
-
 int user_by_name(struct user_t* user_t,char name[100]){
     struct user* elem = user_t->head;
     while (elem!=NULL){
