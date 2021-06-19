@@ -5,32 +5,23 @@
 #include "crypt_func_and_reg_and_log.h"
 #include "danni_i_funcii.h"
 #include "menu.h"
-int first_menu();
-int ok_login();
-int signup(struct user_t* users_t,struct smetka_t *smetki_t);
-int login(struct user_t* users_t,struct smetka_t *smetki_t, struct transaction_t* transactions_t);
-void first_menu_navigator(int action, struct user_t *users_t,struct smetka_t *smetki_t, struct transaction_t* transactions_t);
-void navigator(int action);
+
 
 
 int first_menu(){
 
-    char option[50]; 
+    int option; 
     int flag = 0;
     while(flag == 0){
-    printf("Log\n============\nRegister\n============\nExit\n============ \n");
-    scanf("%s", option);
+    printf("1:Log\n============\n2:Register\n============\n0:Exit\n============ \n");
+    scanf("%d", option);
     getchar();
 
-    if(strstr(option,"Log")){
+    if(option == 1 || option == 2){
         flag++;
-        return 1;
+        return option;
     }
-    else if(strstr(option,"Register")){
-        flag++;
-        return 2;
-    }
-    else if(strstr(option,"Exit")){
+    else if(option == 0){
         exit(0);
     }
     printf("You have selected invalite action. Please select again.\n");
@@ -38,31 +29,17 @@ int first_menu(){
 }
 
 int ok_login(){
-    char option[25]; 
-    int flag = 0;
+    int option; 
 
         while(1){
-            printf("\nDeposit\n============\nWithdraw\n============\nTransfer\n============\nExit\n============\n");
-            scanf( "%s" , option ); 
-            if(strstr(option,"Deposit")){
-                flag = 1;
+            printf("\n1:Deposit\n============\n2:Withdraw\n============\n3:Transfer\n============\n0:Exit\n============\n");
+            scanf( "%d" , option ); 
+            if(option == 1 || option == 2 || option == 3 || option == 0){
                 break;
             }
-            else if(strstr(option,"Withdraw")){
-                    flag = 2;
-                    break;
-                }   
-            else if(strstr(option,"Transfer")){
-                    flag = 3;
-                    break;
-                }
-            else if(strstr(option,"Exit")){
-                    flag = 4;
-                    break;
-                }
             printf("You have selected invalite action. Please select again.\n");
             }
-    return flag;
+    return option;
 
 }
 
