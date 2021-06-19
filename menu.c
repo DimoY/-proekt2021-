@@ -17,20 +17,20 @@ int first_menu(){
     char option[50]; 
     int flag = 0;
     while(flag == 0){
-    printf("Sign in\n============\nSign up\n============\nExit\n============ \n");
-    fgets(option,50,stdin);
-    
-    if(strstr(option,"Sign in")){
+    printf("Log\n============\nRegister\n============\nExit\n============ \n");
+    scanf("%s", &option);
+    getchar();
+
+    if(strstr(option,"Log")){
         flag++;
         return 1;
     }
-    else if(strstr(option,"Sign up")){
+    else if(strstr(option,"Register")){
         flag++;
         return 2;
     }
     else if(strstr(option,"Exit")){
-        flag++;
-        return 3;
+        exit(0);
     }
     printf("You have selected invalite action. Please select again.\n");
     }
@@ -41,7 +41,7 @@ int ok_login(){
     int flag = 0;
 
         while(1){
-            printf("\nDeposit\n============\nWithdrawal\n============\nTransfer\n============\nLog out\n============\n");
+            printf("\nDeposit\n============\nWithdrawal\n============\nTransfer\n============\nExit\n============\n");
             scanf( "%s" , &option ); 
             if(strstr(option,"Deposit")){
                 flag = 1;
@@ -106,19 +106,22 @@ int login(struct user_t* users_t,struct smetka_t *smetki_t, struct transaction_t
         if(check_user(users_t,username,pass) == 1){
         action =  ok_login();
         if(action == 1){
+            printf("\n============\n");
             deposit(smetki_t, username);
         }
         else if(action == 2){
+            printf("\n============\n");
             withdraw(smetki_t, username);
         }
         else if(action == 3){
+            printf("\n============\n");
             printf("Name of accout to transfer:\n");
-            scanf("%s",&username);
-            username2[strcspn(username2, "\n")] = 0;
+            scanf("%s",&username2);
             transfer(transactions_t, smetki_t, username, username2);
             process_transaction(transactions_t->head, smetki_t);
         }
         else if(action == 4){
+            printf("\n============\n");
             navigator(1);
         }
     }
