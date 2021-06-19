@@ -38,10 +38,6 @@ void remove_smetka(struct smetka_t* smetka_t,char spec[250]){
     }
 }
 
-struct user* return_user_from_smetka(struct smetka* smetka,struct user_t* user_t){
-    int user_id = smetka->user_id;
-    return user_by_id(user_t,user_id);
-}
 
 struct smetka* smetka_by_spec(struct smetka_t* smetka_t,char spec[250]){
     struct smetka* elem = smetka_t->head;
