@@ -18,7 +18,7 @@ int first_menu(){
     int flag = 0;
     while(flag == 0){
     printf("Log\n============\nRegister\n============\nExit\n============ \n");
-    scanf("%s", &option);
+    scanf("%s", option);
     getchar();
 
     if(strstr(option,"Log")){
@@ -30,7 +30,7 @@ int first_menu(){
         return 2;
     }
     else if(strstr(option,"Exit")){
-        exit(0);
+        return 3;
     }
     printf("You have selected invalite action. Please select again.\n");
     }
@@ -42,7 +42,7 @@ int ok_login(){
 
         while(1){
             printf("\nDeposit\n============\nWithdrawal\n============\nTransfer\n============\nExit\n============\n");
-            scanf( "%s" , &option ); 
+            scanf( "%s" , option ); 
             if(strstr(option,"Deposit")){
                 flag = 1;
                 break;
@@ -117,13 +117,13 @@ int login(struct user_t* users_t,struct smetka_t *smetki_t, struct transaction_t
         else if(action == 3){
             printf("\n============\n");
             printf("Name of accout to transfer:\n");
-            scanf("%s",&username2);
+            scanf("%s",username2);
             transfer(transactions_t, smetki_t, username, username2);
             process_transactions(transactions_t, smetki_t);
         }
         else if(action == 4){
             printf("\n============\n");
-            navigator(1);
+            return;
         }
     }
     else{ printf("No such account founded. Try again or Sign up:\n");

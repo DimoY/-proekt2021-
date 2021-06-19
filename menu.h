@@ -1,5 +1,5 @@
-#ifndef FUNCTIONS_H_INCLUDED
-#define FUNCTIONS_H_INCLUDED
+#ifndef MENU_H_INCLUDED
+#define MENU_H_INCLUDED
 
 void navigator(int action);
 int first_menu();
