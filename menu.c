@@ -67,10 +67,9 @@ int ok_login(){
 
 
 int signup(struct user_t* users_t,struct smetka_t *smetki_t){
-    static int users_ids = 1;
     char username[100];
     char pass[100];
-    
+    int id = 0;
     printf("Username:");
     fgets(username,100,stdin);
     username[strcspn(username, "\n")] = 0;
@@ -78,8 +77,10 @@ int signup(struct user_t* users_t,struct smetka_t *smetki_t){
     fgets(pass,100,stdin);
     pass[strcspn(pass, "\n")] = 0;
     crypt(pass);   
-    add_user(users_t,username,pass);
-    add_smetka(smetki_t,username,users_ids++); 
+    id = add_user(users_t,username,pass);
+    char word[250];
+    random_string(word);
+    add_smetka(smetki_t,word,id); 
     save_user(users_t);
     save_smetki(smetki_t);
     return 0;
