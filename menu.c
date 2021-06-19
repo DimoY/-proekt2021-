@@ -5,6 +5,12 @@
 #include "crypt_func_and_reg_and_log.h"
 #include "danni_i_funcii.h"
 #include "menu.h"
+int first_menu();
+int ok_login();
+int signup(struct user_t* users_t,struct smetka_t *smetki_t);
+int login(struct user_t* users_t,struct smetka_t *smetki_t, struct transaction_t* transactions_t);
+void first_menu_navigator(int action, struct user_t *users_t,struct smetka_t *smetki_t, struct transaction_t* transactions_t);
+void navigator(int action);
 
 
 
@@ -29,6 +35,7 @@ int first_menu(){
 }
 
 int ok_login(){
+    int flag = 0;
     int option; 
 
         while(1){
