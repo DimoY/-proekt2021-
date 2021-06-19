@@ -118,7 +118,7 @@ int login(struct user_t* users_t,struct smetka_t *smetki_t, struct transaction_t
             printf("Name of accout to transfer:\n");
             scanf("%s",&username2);
             transfer(transactions_t, smetki_t, username, username2);
-            process_transaction(transactions_t->head, smetki_t);
+            process_transactions(transactions_t, smetki_t);
         }
         else if(action == 4){
             printf("\n============\n");

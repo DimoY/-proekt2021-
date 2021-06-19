@@ -115,18 +115,8 @@ void transfer(struct transaction_t* transaction, struct smetka_t* smetka, char n
 {
     int money_from_to = 0;
 
-     struct smetka* from = smetka_by_spec(smetka, name_smetka1);
-     struct smetka* to = smetka_by_spec(smetka, name_smetka2);
-
-    if(from == NULL || to == NULL)
-    {
-         printf("\nMistake in smetkas\n");
-         return;
-    }
-    
     printf("How much to transfer: ");
     scanf("%d.2f",&money_from_to);
-
 
     char code[250];
     random_string(250, code);
