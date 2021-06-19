@@ -4,13 +4,14 @@
 
 #include "crypt_func_and_reg_and_log.h"
 #include "danni_i_funcii.h"
-
+#include "menu.h"
 int first_menu();
 int ok_login();
 int signup(struct user_t* users_t,struct smetka_t *smetki_t);
 int login(struct user_t* users_t,struct smetka_t *smetki_t, struct transaction_t* transactions_t);
 void first_menu_navigator(int action, struct user_t *users_t,struct smetka_t *smetki_t, struct transaction_t* transactions_t);
 void navigator(int action);
+
 
 int first_menu(){
 
@@ -41,13 +42,13 @@ int ok_login(){
     int flag = 0;
 
         while(1){
-            printf("\nDeposit\n============\nWithdrawal\n============\nTransfer\n============\nExit\n============\n");
+            printf("\nDeposit\n============\nWithdraw\n============\nTransfer\n============\nExit\n============\n");
             scanf( "%s" , option ); 
             if(strstr(option,"Deposit")){
                 flag = 1;
                 break;
             }
-            else if(strstr(option,"Withdrawal")){
+            else if(strstr(option,"Withdraw")){
                     flag = 2;
                     break;
                 }   
@@ -90,17 +91,19 @@ int login(struct user_t* users_t,struct smetka_t *smetki_t, struct transaction_t
         action =  ok_login();
         if(action == 1){
             printf("\n============\n");
+
             deposit(smetki_t, return_smetka_from_user(smetki_t, id_by_user(users_t,username))->spec);
+
         }
         else if(action == 2){
             printf("\n============\n");
-            withdraw(smetki_t, username);
+            withdraw(smetki_t, return_smetka_from_user(smetki_t, id_by_user(users_t,username))->spec);
         }
         else if(action == 3){
             printf("\n============\n");
             printf("Name of accout to transfer:\n");
             scanf("%s",username2);
-            transfer(transactions_t, smetki_t, username, username2);
+            transfer(transactions_t, smetki_t, return_smetka_from_user(smetki_t, id_by_user(users_t,username))->spec, username2);
             process_transaction(transactions_t->head, smetki_t);
         }
         else if(action == 4){
