@@ -70,6 +70,18 @@ struct user* user_by_id(struct user_t* user_t,int id){
     }
     return NULL;
 }
+int id_by_user(struct user_t* user_t,char name[100]){
+    struct user* elem = user_t->head;
+    int i = 1;
+    while (elem!=NULL){
+        if(strcmp(elem->name,name)==0){
+            return i;
+        }
+        elem = elem->next;
+        i++;
+     }
+     return -1;
+}
 int check_user(struct user_t* user_t,char name[100],char pass[100]){
     
     if(user_t->head != NULL){
@@ -87,4 +99,14 @@ int check_user(struct user_t* user_t,char name[100],char pass[100]){
         }
     }
     return 0;
+}
+struct smetka* return_smetka_from_user(struct smetka_t* smetka,int id){
+    struct smetka* elem = smetka->head;
+    while (elem!=NULL){
+        if(elem->user_id = id){
+            return elem;
+        }
+        elem = elem->next;
+     }
+    return NULL;
 }

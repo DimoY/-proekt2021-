@@ -5,7 +5,7 @@
 #include "danni_i_funcii.h"
 #include "menu.h"
 
-int signup(struct user_t* users_t,struct smetka_t *smetki_t,char smetka[250]){
+int signup(struct user_t* users_t,struct smetka_t *smetki_t){
     char username[100];
     char pass[100];
     int id = 0;
@@ -19,7 +19,6 @@ int signup(struct user_t* users_t,struct smetka_t *smetki_t,char smetka[250]){
     id = add_user(users_t,username,pass);
     char word[250];
     random_string(250,word);
-    strcpy(smetka,word);
     add_smetka(smetki_t,word,id); 
     save_user(users_t);
     save_smetki(smetki_t);

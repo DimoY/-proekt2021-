@@ -55,6 +55,8 @@ void deposit(struct smetka_t* smetka, char name_smetka[]);
 void transfer(struct transaction_t* transaction, struct smetka_t* smetka, char name_smetka1[], char name_smetka2[]);
 void process_transaction(struct transaction *txn, struct smetka_t *smetki);
 void process_transactions(struct transaction_t *txn_list, struct smetka_t *smetki);
+struct smetka* return_smetka_from_user(struct smetka_t* smetka,int id);
+int id_by_user(struct user_t* user_t,char name[100]);
 #endif
 
 
