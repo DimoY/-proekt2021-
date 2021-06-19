@@ -60,7 +60,7 @@ int login(struct user_t* users_t,struct smetka_t *smetki_t, struct transaction_t
     pass[strcspn(pass, "\n")] = 0;
     crypt(pass);
 
-    while (action!=4)
+   while (action!=4)
     {
         if(check_user(users_t,username,pass) == 1){
         action =  ok_login();
@@ -78,7 +78,9 @@ int login(struct user_t* users_t,struct smetka_t *smetki_t, struct transaction_t
             printf("\n============\n");
             printf("Name of accout to transfer:\n");
             scanf("%s",username2);
-            transfer(transactions_t, smetki_t, return_smetka_from_user(smetki_t, id_by_user(users_t,username))->spec, username2);
+            char m[250];
+            strcpy(m,return_smetka_from_user(smetki_t, id_by_user(users_t,username2))->spec);
+            transfer(transactions_t, smetki_t, return_smetka_from_user(smetki_t, id_by_user(users_t,username))->spec,m);
             process_transaction(transactions_t->head, smetki_t);
         }
         else if(action == 0){
