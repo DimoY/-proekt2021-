@@ -94,7 +94,7 @@ void transfer(struct transaction_t* transaction, struct smetka_t* smetka, char n
     }
     
     printf("How much to transfer: ");
-    scanf("%d.2f",&money_from_to);
+    scanf("%d,2f",&money_from_to);
 
 
     char code[250];
