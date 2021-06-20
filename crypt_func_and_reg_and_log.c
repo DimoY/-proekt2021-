@@ -20,7 +20,7 @@ void crypter(char* e){
         A=(e[i]+A);
         B=(A+B);
     }
-    sprintf(e, "%d", B<<(16+A));
+    sprintf(e, "%d", (B<<16)|A);
 }
 void crypt(char* pass){
     crypter(pass);
