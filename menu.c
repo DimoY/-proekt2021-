@@ -48,7 +48,7 @@ int login(struct user_t* users_t,struct smetka_t *smetki_t, struct transaction_t
     char username[100];
     char username2[100];
     char pass[100];
-    char option[100];
+    int option;
     int action = -1;
 
     printf("Username:");
@@ -91,19 +91,20 @@ int login(struct user_t* users_t,struct smetka_t *smetki_t, struct transaction_t
         
     }
     else{ 
-        printf("No such account founded. Try again or Sign up:\n");
-        label: fgets(option, 100, stdin);
-        if(strstr(option,"Try again")){
+        printf("\n\n============\nNo such account founded.\n============\n1:Try again\n============\n2:Sign up:\n");
+        label: scanf("%d", &option);
+        getchar();
+        if(option == 1){
             login(users_t,smetki_t,transactions_t);
         }
-        else if(strstr(option, "Sign up")){
+        else if(option == 2){
             int allow = signup(users_t,smetki_t);
             while(allow == -1){
                 allow = signup(users_t,smetki_t);
             }
         }
         else{
-            printf("Invalide action. Please Try again or Sign up:\n");
+            printf("Invalide action.\n============\n1:Try again\n============\n2:Sign up:\n");
             goto label;
         }
     }
