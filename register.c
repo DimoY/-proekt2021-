@@ -17,6 +17,9 @@ int signup(struct user_t* users_t,struct smetka_t *smetki_t){
     pass[strcspn(pass, "\n")] = 0;
     crypt(pass);   
     id = add_user(users_t,username,pass);
+    if(id==-1){
+        return -1;
+    }
     char word[250];
     random_string(250,word);
     add_smetka(smetki_t,word,id); 
