@@ -82,11 +82,6 @@ void deposit(struct smetka_t* smetka, char name_smetka[])
 
 void transfer(struct transaction_t* transaction, struct smetka_t* smetka, char name_smetka1[], char name_smetka2[])
 {
-    struct smetka* elem = smetka->head;
-    while(elem !=NULL){
-        printf("%s",elem->spec);
-        elem = elem->next;
-    }
     int money_from_to = 0;
 
      struct smetka* from = smetka_by_spec(smetka, name_smetka1);
