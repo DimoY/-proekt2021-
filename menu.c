@@ -78,9 +78,7 @@ int login(struct user_t* users_t,struct smetka_t *smetki_t, struct transaction_t
             printf("\n============\n");
             printf("Name of accout to transfer:\n");
             scanf("%s",username2);
-            char m[250];
-            strcpy(m,return_smetka_from_user(smetki_t, id_by_user(users_t,username2))->spec);
-            transfer(transactions_t, smetki_t, return_smetka_from_user(smetki_t, id_by_user(users_t,username))->spec,m);
+            transfer(transactions_t, smetki_t, return_smetka_from_user(smetki_t, id_by_user(users_t,username))->spec,username2);
         }
         else if(action == 4){
             printf("\n============\n");
@@ -99,7 +97,10 @@ int login(struct user_t* users_t,struct smetka_t *smetki_t, struct transaction_t
             login(users_t,smetki_t,transactions_t);
         }
         else if(strstr(option, "Sign up")){
-            signup(users_t,smetki_t);
+            int allow = signup(users_t,smetki_t);
+            while(allow == -1){
+                allow = signup(users_t,smetki_t);
+            }
         }
         else{
             printf("Invalide action. Please Try again or Sign up:\n");
@@ -115,7 +116,10 @@ void first_menu_navigator(int action, struct user_t *users_t,struct smetka_t *sm
         return;
     }
     else if(action == 2){
-            signup(users_t,smetki_t);
+            int allow = signup(users_t,smetki_t);
+            while(allow == -1){
+                allow = signup(users_t,smetki_t);
+            }
             return;
         }     
 }

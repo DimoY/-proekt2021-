@@ -1,7 +1,7 @@
 
 #ifndef FUNCTIONS_K_INCLUDED
 #define FUNCTIONS_K_INCLUDED
-#define RAND_STR "ABCDEFGHIGKLMNOPQRSTUVWXYZabcdefghigklmnopqrstuvwxyz0987654321!@#$^&*(){}:|?><"
+#define RAND_STR "ABCDEFGHIGKLMNOPQRSTUVWXYZabcdefghigklmnopqrstuvwxyz0987654321"
 
 
 

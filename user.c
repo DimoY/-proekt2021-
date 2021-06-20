@@ -3,7 +3,7 @@
 #include <string.h>
 #include <stdio.h>
 
-int add_user(struct user_t* user_t,char name[250],char pass[250]){
+int add_user(struct user_t* user_t,char name[100],char pass[100]){
     if(user_by_name(user_t,name)!=NULL){
         return -1;
     }

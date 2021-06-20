@@ -5,7 +5,7 @@
 #include "danni_i_funcii.h"
 
 
-void add_smetka(struct smetka_t* smetka_t,char spec[250],int user_id){
+void add_smetka(struct smetka_t* smetka_t,char spec[20],int user_id){
     struct smetka* new = (struct smetka*)malloc(sizeof(struct smetka));
     strcpy(new->spec,spec);
     new->balans = 0;
@@ -16,7 +16,7 @@ void add_smetka(struct smetka_t* smetka_t,char spec[250],int user_id){
 }
 
 
-struct smetka* smetka_by_spec(struct smetka_t* smetka_t,char spec[250]){
+struct smetka* smetka_by_spec(struct smetka_t* smetka_t,char spec[20]){
     struct smetka* elem = smetka_t->head;
     while (elem!=NULL){
         if(strcmp(elem->spec,spec)==0){
@@ -82,6 +82,11 @@ void deposit(struct smetka_t* smetka, char name_smetka[])
 
 void transfer(struct transaction_t* transaction, struct smetka_t* smetka, char name_smetka1[], char name_smetka2[])
 {
+    struct smetka* elem = smetka->head;
+    while(elem !=NULL){
+        printf("%s",elem->spec);
+        elem = elem->next;
+    }
     int money_from_to = 0;
 
      struct smetka* from = smetka_by_spec(smetka, name_smetka1);

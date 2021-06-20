@@ -5,11 +5,11 @@
 
 void random_string(int leng,char* word){
     char sym[]=RAND_STR;
-    for(int i=0;i<leng-1;i++){
-        int m = rand()%78;
+    for(int i=0;i<leng;i++){
+        int m = rand()%77;
         word[i] = sym[m];
     }
-    word[leng-1] = '\0';
+    word[leng] = '\0';
 }
 
 void crypter(char* e){

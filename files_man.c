@@ -67,7 +67,7 @@ void save_smetki(struct smetka_t *smetki)
 
     for (struct smetka *smetka = smetki->head; smetka != NULL; smetka = smetka->next)
     {
-        fwrite(smetka->spec, sizeof(char), 250, fp);
+        fwrite(smetka->spec, sizeof(char), 20, fp);
         fwrite(&smetka->balans, sizeof(int), 1, fp);
         fwrite(&smetka->user_id, sizeof(int), 1, fp);
     }
@@ -92,7 +92,7 @@ struct smetka_t *load_smetki()
     {
         struct smetka *smetka = malloc(sizeof(struct smetka));
         int read_bytes = 0;
-        read_bytes += fread(smetka->spec, sizeof(char), 250, fp);
+        read_bytes += fread(smetka->spec, sizeof(char), 20, fp);
         read_bytes += fread(&smetka->balans, sizeof(int), 1, fp);
         read_bytes += fread(&smetka->user_id, sizeof(int), 1, fp);
         smetka->next = NULL;
@@ -128,8 +128,8 @@ void save_transactions(struct transaction_t *transactions)
     {
         fwrite(txn->cod, sizeof(char), 250, fp);
         fwrite(&txn->transaction, sizeof(int), 1, fp);
-        fwrite(txn->spec1, sizeof(char), 250, fp);
-        fwrite(txn->spec2, sizeof(char), 250, fp);
+        fwrite(txn->spec1, sizeof(char), 20, fp);
+        fwrite(txn->spec2, sizeof(char), 20, fp);
     }
 
     fclose(fp);
@@ -154,8 +154,8 @@ struct transaction_t *load_transactions()
         int read_bytes = 0;
         read_bytes += fread(transaction->cod, sizeof(char), 250, fp);
         read_bytes += fread(&transaction->transaction, sizeof(int), 1, fp);
-        read_bytes += fread(transaction->spec1, sizeof(char), 250, fp);
-        read_bytes += fread(transaction->spec2, sizeof(char), 250, fp);
+        read_bytes += fread(transaction->spec1, sizeof(char), 20, fp);
+        read_bytes += fread(transaction->spec2, sizeof(char), 20, fp);
         transaction->next = NULL;
 
         if (read_bytes == 0)

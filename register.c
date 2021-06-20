@@ -18,11 +18,13 @@ int signup(struct user_t* users_t,struct smetka_t *smetki_t){
     crypt(pass);   
     id = add_user(users_t,username,pass);
     if(id==-1){
+        printf("User already exists\n");
         return -1;
     }
-    char word[250];
-    random_string(250,word);
+    char word[20];
+    random_string(20,word);
     add_smetka(smetki_t,word,id); 
+    printf("your smetka is: %s\n",word);
     save_user(users_t);
     save_smetki(smetki_t);
     return 0;

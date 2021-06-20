@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-void add_transaction(struct transaction_t *transaction_t, char spec1[250], char spec2[250], int transaction, char cod[250])
+void add_transaction(struct transaction_t *transaction_t, char spec1[10], char spec2[10], int transaction, char cod[250])
 {
     struct transaction *new = (struct transaction *)malloc(sizeof(struct transaction));
     strcpy(new->spec1, spec1);
