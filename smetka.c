@@ -100,7 +100,7 @@ void transfer(struct transaction_t* transaction, struct smetka_t* smetka, char n
     char code[250];
     random_string(250, code);
     
-    add_transaction(transaction, name_smetka2, name_smetka1, money_from_to, code);
+    add_transaction(transaction, name_smetka1, name_smetka2, money_from_to, code);
 
     save_transactions(transaction);
 }
