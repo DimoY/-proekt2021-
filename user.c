@@ -30,14 +30,11 @@ struct user* user_by_name(struct user_t* user_t,char name[100]){
 
 
 int id_by_user(struct user_t* user_t,char name[100]){
-    struct user* elem = user_t->head;
-    while (elem!=NULL){
-        if(strcmp(elem->name,name)==0){
-            return elem->id;
-        }
-        elem = elem->next;
-     }
-     return -1;
+    struct user* elem = user_by_name(user_t, name);
+    if (elem != NULL)
+        return elem->id;
+    else
+        return -1;
 }
 int check_user(struct user_t* user_t,char name[100],char pass[100]){
     struct user* elem = user_by_name(user_t,name);
