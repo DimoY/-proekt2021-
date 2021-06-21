@@ -100,6 +100,7 @@ int login(struct user_t* users_t,struct smetka_t *smetki_t, struct transaction_t
         else if(option == 2){
             int allow = signup(users_t,smetki_t);
             while(allow == -1){
+                printf("\n============\nUsername used from other user!\n============\n");
                 allow = signup(users_t,smetki_t);
             }
         }
@@ -119,6 +120,7 @@ void first_menu_navigator(int action, struct user_t *users_t,struct smetka_t *sm
     else if(action == 2){
             int allow = signup(users_t,smetki_t);
             while(allow == -1){
+                printf("\n============\nUsername used from other user!\n============\n");
                 allow = signup(users_t,smetki_t);
             }
             return;
